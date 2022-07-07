@@ -12,3 +12,6 @@ Later, one of the devs introduced me to Python's SimpleHTTPServer. It's pretty m
 ### TL;DR
 
 `python -mSimpleHTTPServer 8081`
+
+### Update for Python 3
+`python3 -mhttp.server 8081`
