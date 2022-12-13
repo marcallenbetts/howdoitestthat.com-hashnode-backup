@@ -1,4 +1,4 @@
-## Quack scripts
+# Quack scripts
 
 Start with the obvious: quack scripts have nothing to do with [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging). The only thing they have in common is ducks. I could have chosen pretty much anything for this but I chose ducks. Because ducks are awesome.
 
@@ -8,7 +8,7 @@ Here's a couple examples I've created recently.
 
 I had a test that was causing backend server to run out of memory. I needed to re-run the tests to try to figure out exactly where in the run the server was giving up. Normally I'd just watch the server logs side by side with the test output, but my ability to focus on more than one thing at a time is notoriously bad. So here's `quack.sh` to send a curl request every ten seconds at quack at me when the server doesn't respond.
 
-```
+```plaintext
 while [ 1 -eq 1 ]
 do
     RES=`curl -s https://myhost.com/heartbeat`
@@ -20,13 +20,13 @@ do
         fi
     sleep 10
 done
-``` 
+```
 
-More recently, I was testing some functionality that uses websocket connections. Using browser debug or proxy tools will show the websocket requests, but not always in the most intuitive manner. So I decided to combine a [mitmproxy sriptt](https://howdoitestthat.com/mitmproxy-scripts) with a quack script so I'd get alerted when my web client received a websocket message back from the server.
+More recently, I was testing some functionality that uses websocket connections. Using browser debug or proxy tools will show the websocket requests, but not always in the most intuitive manner. So I decided to combine a [mitmproxy script](https://howdoitestthat.com/mitmproxy-scripts) with a quack script so I'd get alerted when my web client received a websocket message back from the server.
 
 For this one, in addition to quacking, I write the messages to a log file with a timestamp.
 
-```
+```plaintext
 import os
 
 from mitmproxy import ctx, http
